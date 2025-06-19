@@ -1,7 +1,7 @@
 {
   "name": "@reglyph/chats",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -47,5 +47,19 @@
   ],
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reglyph/chats.git"
+  },
+  "author": "yukifury",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reglyph/chats/issues"
+  },
+  "homepage": "https://github.com/reglyph/chats#readme"
 }
