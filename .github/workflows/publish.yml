@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-       shell: bash
+        shell: bash
 
     steps:
       - name: Checkout
@@ -41,30 +41,29 @@ jobs:
       - name: Run Changeset version
         id: version
         run: |
-            pnpm changeset version
-            if git diff --quiet; then
-              echo "no_changes=true" >> $GITHUB_OUTPUT
-            else
-              echo "no_changes=false" >> $GITHUB_OUTPUT
-            fi
+          pnpm changeset version
+          if git diff --quiet; then
+            echo "no_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "no_changes=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Publish and commit version bump
         if: steps.version.outputs.no_changes == 'false'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-            pnpm run build
-            
-            npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
-            pnpm publish --access public --no-git-checks
-            
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add package.json CHANGELOG.md
-            git commit -m "chore: release new version [skip ci]"
-            git push origin HEAD:master
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Notify on publish
-        if: steps.changesets.outputs.published == 'true'
-        run: | 
-          echo "Package was published: ${{ steps.changesets.outputs.publishedPackages }}"
+          pnpm run build
+          
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+          
+          pnpm publish --access public --no-git-checks
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add package.json CHANGELOG.md
+          
+          git commit -m "chore: release new version [skip ci]" || echo "No changes to commit"
+          
+          git push origin HEAD:master
