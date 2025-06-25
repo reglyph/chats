@@ -1,0 +1,8 @@
+.playground {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #010101;
+    height: 100vh;
+    width: 100vw;
+}
