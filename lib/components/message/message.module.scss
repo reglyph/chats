@@ -1,0 +1,16 @@
+@import "/lib/global.scss";
+
+.message-base {
+    border-radius: 18px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.message-incoming {
+    background: var(--color-message-incoming);
+}
+.message-outgoing {
+    background: var(--color-message-outgoing);
+}

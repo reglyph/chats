@@ -1,0 +1,22 @@
+:root {
+  --font-family: Roboto, sans-serif;
+
+  --color-message-incoming: #EBEDF0;
+  --color-message-outgoing: #CE796B33;
+  --color-message-name: #CE796B;
+
+  --text-name-size: 13px;
+  --text-body-size: 16px;
+
+  --text-name-line-height: 16px;
+  --text-body-line-height: 20px;
+
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+}
+
+* {
+  font-family: var(--font-family), serif;
+}

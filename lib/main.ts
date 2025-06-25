@@ -1,1 +1,1 @@
-export { Message } from './components';
+export { Message, MessageSender, MessageBody } from './components';

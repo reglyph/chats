@@ -1,0 +1,8 @@
+@import "/lib/global.scss";
+
+.name {
+  font-size: var(--text-name-size);
+  line-height: var(--text-name-line-height);
+  font-weight: var(--font-medium);
+  color: var(--color-message-name);
+}
