@@ -1,55 +1,22 @@
-import { dirname, extname, relative, resolve } from 'path';
-import { fileURLToPath } from 'node:url';
-import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
-import { libInjectCss } from 'vite-plugin-lib-inject-css';
-import { glob } from 'glob';
-import react from '@vitejs/plugin-react';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+  plugins: [react()],
   build: {
-    copyPublicDir: false,
     lib: {
-      entry: resolve(__dirname, 'lib/main.ts'),
-      formats: ['es'],
+      entry: "src/index.ts",
+      name: "@reglyph/chats",
+      fileName: "chats",
     },
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
-      input: Object.fromEntries(
-        glob
-          .sync('lib/**/*.{ts,tsx}', {
-            ignore: ['lib/**/*.d.ts', 'lib/**/*.stories.tsx'],
-          })
-          .map((file) => [
-            // The name of the entry point
-            // lib/nested/foo.ts becomes nested/foo
-            relative('lib', file.slice(0, file.length - extname(file).length)),
-            // The absolute path to the entry file
-            // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
-            fileURLToPath(new URL(file, import.meta.url)),
-          ]),
-      ),
+      external: ["react", "react-dom"],
       output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
-        // globals: {
-        //   react: 'React',
-        // },
-        assetFileNames: 'assets/[name][extname]',
-        entryFileNames: '[name].js',
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
       },
     },
   },
-
-  plugins: [
-    react(),
-    libInjectCss(),
-    dts({
-      tsconfigPath: resolve(__dirname, 'tsconfig.lib.json'),
-    }),
-  ],
 });
