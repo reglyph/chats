@@ -1,0 +1,15 @@
+@mixin variables {
+  --rg-spacing-base: 2px;
+  --rg-spacing-0: calc(var(--g-spacing-base) * 0);
+  --rg-spacing-half: calc(var(--g-spacing-base) * 0.5);
+  --rg-spacing-1: var(--g-spacing-base);
+  --rg-spacing-2: calc(var(--g-spacing-base) * 2);
+  --rg-spacing-3: calc(var(--g-spacing-base) * 3);
+  --rg-spacing-4: calc(var(--g-spacing-base) * 4);
+  --rg-spacing-5: calc(var(--g-spacing-base) * 5);
+  --rg-spacing-6: calc(var(--g-spacing-base) * 6);
+  --rg-spacing-7: calc(var(--g-spacing-base) * 7);
+  --rg-spacing-8: calc(var(--g-spacing-base) * 8);
+  --rg-spacing-9: calc(var(--g-spacing-base) * 9);
+  --rg-spacing-10: calc(var(--g-spacing-base) * 10);
+}

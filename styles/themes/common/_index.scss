@@ -1,0 +1,7 @@
+@use './typography';
+@use './spacing';
+
+@mixin r-theme-common {
+  @include typography.variables;
+  @include spacing.variables;
+}

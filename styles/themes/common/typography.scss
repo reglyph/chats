@@ -1,0 +1,10 @@
+@mixin variables {
+  --rg-font-family-sans: 'Manrope', sans-serif;
+  --rg-font-family-monospace: 'Manrope', monospace;
+  --rg-text-body-font-family: var(--rg-font-family-sans);
+  --rg-text-caption-font-family: var(--rg-font-family-sans);
+  --rg-text-header-font-family: var(--rg-font-family-sans);
+  --rg-text-subheader-font-family: var(--rg-font-family-sans);
+  --rg-text-display-font-family: var(--rg-font-family-sans);
+  --rg-text-code-font-family: var(--rg-font-family-monospace);
+}

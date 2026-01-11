@@ -1,0 +1,21 @@
+@use '../../variables';
+
+$block: '.#{variables.$ns}image';
+
+#{$block} {
+  &_variant_rounded {
+    border-radius: 4px;
+  }
+
+  &_variant_square {
+    border-radius: 0;
+  }
+
+  &_variant_circle {
+    border-radius: 100%;
+  }
+
+  &_variant_inherit {
+    border-radius: inherit;
+  }
+}
