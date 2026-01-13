@@ -23,7 +23,7 @@ export const Image = React.forwardRef(function Image<
    * Utility for 'number | string' support
    */
   const getSize = (value: string | number) => {
-    if (value !== typeof 'string') {
+    if (typeof value !== 'string') {
       return `${value}px`;
     }
 
