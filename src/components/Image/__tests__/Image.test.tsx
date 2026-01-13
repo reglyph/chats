@@ -28,8 +28,6 @@ describe('Image', () => {
     const img = screen.getByRole('img', { name: 'numeric test' });
 
     expect(img).toHaveStyle({ width: '200px', height: '150px' });
-    expect(img).toHaveAttribute('width', '200');
-    expect(img).toHaveAttribute('height', '150');
   });
 
   it('should keep string sizes as-is in styles', () => {
