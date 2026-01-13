@@ -14,7 +14,7 @@ reporter.push(
     {
       open: process.env.CI ? 'never' : 'on-failure',
       outputFolder: resolve(
-        '.',
+        './playwright',
         process.env.IS_DOCKER ? 'report-docker' : 'report',
       ),
     },
@@ -25,7 +25,7 @@ reporter.push(
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  outputDir: resolve('.', 'test-results'),
+  outputDir: resolve('./playwright', 'test-results'),
   testDir: resolve('.', 'src'),
   testMatch: '**/__tests__/*.visual.test.tsx',
 

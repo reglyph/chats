@@ -36,3 +36,4 @@ storybook-static
 /playwright/report*
 
 /playwright/playwright/.cache/
+/report/
