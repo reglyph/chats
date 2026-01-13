@@ -1,6 +1,6 @@
 {
   "name": "@reglyph/chats",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Reglyph Chats UI base styling and components",
   "type": "module",
   "keywords": [

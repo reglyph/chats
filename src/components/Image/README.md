@@ -17,7 +17,7 @@ attributes.
 | :-------- | :------------------------------ | :---------------: | :-----: |
 | src       | Path to the file                |     `string`      |         |
 | alt       | Required `alt` attribute        |     `string`      |         |
-| loading   |                                 |  `eager` `lazy`   | `lazy`  |
+| loading   |                                 |  `eager` `lazy`   | `eager` |
 | height    | Optional height value           | `number` `string` | `100px` |
 | width     | Optional width value            | `number` `string` | `100px` |
 | className | Optional HTML `class` attribute |     `string`      |         |

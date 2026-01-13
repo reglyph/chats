@@ -1,49 +1,46 @@
 import * as React from 'react';
-import { ImagePropsWithTypedAttrs, ImageRef } from './types/common';
+import { ImageProps, ImageRef } from './types/common';
 import { image } from './image/image';
 
-export const Image = React.forwardRef(function Image<
-  C extends React.ElementType = 'img',
->(
-  {
-    src,
-    height = '100px',
-    width = '100px',
-    loading = 'lazy',
-    decoding = 'auto',
-    className,
-    variant,
-    fallbackImageSrc,
-    alt,
-    ...rest
-  }: ImagePropsWithTypedAttrs<C>,
-  ref: ImageRef<C>,
-) {
-  /**
-   * Utility for 'number | string' support
-   */
-  const getSize = (value: string | number) => {
-    if (typeof value !== 'string') {
-      return `${value}px`;
-    }
+export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
+  (
+    {
+      src,
+      height = '100px',
+      width = '100px',
+      loading = 'eager',
+      decoding = 'auto',
+      className,
+      variant,
+      alt,
+      ...rest
+    },
+    ref: ImageRef,
+  ) => {
+    /**
+     * Utility for 'number | string' support
+     */
+    const getSize = (value: string | number) => {
+      if (typeof value !== 'string') {
+        return `${value}px`;
+      }
 
-    return value;
-  };
+      return value;
+    };
 
-  return (
-    <img
-      className={image({ variant }, className)}
-      style={{ height: getSize(height), width: getSize(width) }}
-      src={src ?? fallbackImageSrc}
-      height={height}
-      width={width}
-      loading={loading}
-      ref={ref}
-      decoding={decoding}
-      alt={alt}
-      {...rest}
-    />
-  );
-});
+    return (
+      <img
+        className={image({ variant }, className)}
+        style={{ height: getSize(height), width: getSize(width) }}
+        src={src}
+        loading={loading}
+        ref={ref}
+        decoding={decoding}
+        alt={alt}
+        {...rest}
+      />
+    );
+  },
+);
 
 Image.displayName = 'Image';
