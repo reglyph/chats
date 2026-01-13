@@ -1,7 +1,7 @@
 {
   "extends": "@reglyph/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "ES2018",
     "module": "ESNext",
     "jsx": "react-jsx",
     "declaration": true,
