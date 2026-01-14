@@ -13,6 +13,7 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
       className,
       variant,
       alt,
+      onError,
       ...rest
     },
     ref: ImageRef,
@@ -37,6 +38,13 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
         ref={ref}
         decoding={decoding}
         alt={alt}
+        onError={(e) => {
+          console.error(e);
+
+          if (onError) {
+            onError(e);
+          }
+        }}
         {...rest}
       />
     );
