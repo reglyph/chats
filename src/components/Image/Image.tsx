@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ImageProps, ImageRef } from './types/common';
 import { image } from './image/image';
+import { useCallback } from 'react';
 
 export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
   (
@@ -18,6 +19,18 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
     },
     ref: ImageRef,
   ) => {
+    const handleError = useCallback(
+      (e: React.SyntheticEvent<HTMLImageElement>) => {
+        console.error(`[Image] failed to load "${alt || 'no-alt'}"`, {
+          src,
+          alt,
+        });
+
+        onError?.(e);
+      },
+      [src, alt, onError],
+    );
+
     /**
      * Utility for 'number | string' support
      */
@@ -38,13 +51,7 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
         ref={ref}
         decoding={decoding}
         alt={alt}
-        onError={(e) => {
-          console.error(e);
-
-          if (onError) {
-            onError(e);
-          }
-        }}
+        onError={handleError}
         {...rest}
       />
     );
