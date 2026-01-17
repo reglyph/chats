@@ -11,6 +11,9 @@
     "moduleResolution": "Bundler",
     "skipLibCheck": true,
     "types": ["vitest/globals", "@testing-library/jest-dom", "node"],
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true
   },
   "include": ["src"]
 }
