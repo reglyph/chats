@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 import * as React from 'react';
 import { Image } from '../Image';
 
@@ -68,5 +68,29 @@ describe('Image', () => {
 
     expect(ref.current).not.toBeNull();
     expect(ref.current?.tagName).toBe('IMG');
+  });
+
+  it('should call onError and log an error', () => {
+    const onError = vi.fn();
+    const consoleErrorSpy = vi
+      .spyOn(console, 'error')
+      .mockImplementation(() => {});
+
+    const src = 'https://example.com/example.jpg';
+    const alt = 'error test';
+
+    render(<Image src={src} alt={alt} onError={onError} />);
+
+    const img = screen.getByRole('img', { name: alt });
+
+    fireEvent.error(img);
+
+    expect(onError).toHaveBeenCalled();
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      expect.stringContaining('[Image] failed to load'),
+      expect.objectContaining({ src, alt }),
+    );
+
+    consoleErrorSpy.mockRestore();
   });
 });
