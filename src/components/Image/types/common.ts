@@ -8,6 +8,7 @@ export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   alt: string;
   variant?: ImageVariants;
   className?: string;
+  priority?: boolean;
 }
 
 export type ImageRef = React.Ref<HTMLImageElement>;

@@ -9,9 +9,10 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
       src,
       height = '100px',
       width = '100px',
-      loading = 'eager',
+      loading = 'lazy',
       decoding = 'auto',
       className,
+      priority,
       variant,
       alt,
       onError,
@@ -42,12 +43,14 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
       return value;
     };
 
+    const resolvedLoading = priority ? 'eager' : (loading ?? 'lazy');
+
     return (
       <img
         className={image({ variant }, className)}
         style={{ height: getSize(height), width: getSize(width) }}
         src={src}
-        loading={loading}
+        loading={resolvedLoading}
         ref={ref}
         decoding={decoding}
         alt={alt}
