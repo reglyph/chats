@@ -47,6 +47,7 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
 
     return (
       <img
+        data-testid={`rg-image-${variant ?? 'default'}`}
         className={image({ variant }, className)}
         style={{ height: getSize(height), width: getSize(width) }}
         src={src}
