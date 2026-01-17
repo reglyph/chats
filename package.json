@@ -33,6 +33,7 @@
     "lint:styles:fix": "cross-env npm run lint:styles -- --fix",
     "lint:prettier": "cross-env prettier --check '**/*.md'",
     "lint:prettier:fix": "cross-env prettier --write '**/*.md'",
+    "lint:security": "npm audit",
     "lint": "run-p lint:*",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build && npm pkg delete engines",
@@ -46,8 +47,8 @@
   },
   "dependencies": {
     "@bem-react/classname": "^1.7.0",
-    "react": "^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
-    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sass": "^1.97.1"
   },
   "devDependencies": {
@@ -92,8 +93,8 @@
     "vitest": "^4.0.16"
   },
   "peerDependencies": {
-    "react": "^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
-    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "nano-staged": {
     "*.{css,scss}": [
@@ -105,5 +106,8 @@
     "*.{md,mdx}": [
       "prettier --write"
     ]
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
