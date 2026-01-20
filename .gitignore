@@ -37,3 +37,5 @@ storybook-static
 
 /playwright/playwright/.cache/
 /report/
+/playwright/.cache-docker/
+/coverage/
