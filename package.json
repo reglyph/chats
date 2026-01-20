@@ -20,10 +20,8 @@
   "scripts": {
     "prepare": "husky",
     "test": "vitest",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watchAll",
-    "clean": "gulp clean",
-    "build": "gulp",
+    "test:coverage": "vitest --coverage",
+    "test:watch": "vitest --watch",
     "start": "storybook dev -p 6006",
     "build-storybook": "storybook build -c .storybook -o storybook-static",
     "test-storybook": "test-storybook",
@@ -36,14 +34,11 @@
     "lint:security": "npm audit",
     "lint": "run-p lint:*",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "npm run build && npm pkg delete engines",
-    "playwright:install": "playwright install chromium webkit --with-deps",
-    "playwright": "playwright test --config=playwright/playwright.config.ts",
+    "playwright": "npx playwright test --config=playwright/playwright.config.ts",
+    "playwright:install": "npx playwright install chromium webkit --with-deps",
     "playwright:update": "npm run playwright -- -u",
-    "playwright:clear-cache": "rm -rf ./playwright/.cache",
-    "playwright:docker": "./playwright/run-docker-command.sh npm run playwright --",
-    "playwright:docker:update": "./playwright/run-docker-command.sh npm run playwright:update --",
-    "playwright:docker:clear-cache": "./playwright/run-docker-command.sh clear-cache"
+    "playwright:docker": "./playwright/test-runner/run-playwright.sh",
+    "playwright:docker:update": "./playwright/test-runner/run-playwright.sh update"
   },
   "dependencies": {
     "@bem-react/classname": "^1.7.0",
